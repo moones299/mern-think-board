@@ -1,0 +1,8 @@
+.anime-list {
+display: flex;
+  flex-wrap: wrap;
+  gap: 20px;                   /* فاصله افقی و عمودی */
+  justify-content: center;     /* کارت‌ها رو وسط صفحه نگه می‌داره */
+  padding: 20px;
+ 
+}

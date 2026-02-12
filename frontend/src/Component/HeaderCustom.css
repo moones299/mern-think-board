@@ -1,0 +1,58 @@
+/* ریست پایه */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.Headerbar {
+  display: flex;
+  justify-content: space-between; /* تیتر سمت چپ، جستجو و دکمه سمت راست */
+ gap: 40px;
+  padding: 15px 30px;
+ 
+  color: white;
+ 
+}
+
+/* تیتر */
+.Headerbar h1 {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* بخش جستجو و Add */
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Input جستجو */
+.searchbar input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* دکمه Add Anime */
+.searchbar button {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  color: rgb(27, 128, 230);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.searchbar button:hover {
+  background-color: rgb(27, 128, 230);
+  color: white;
+}

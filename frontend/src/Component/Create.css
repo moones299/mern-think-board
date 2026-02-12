@@ -1,0 +1,88 @@
+*{
+  padding: 0;  
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(204, 237, 248);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+ 
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+
+
+.formWrapper {
+  display: flex;
+  justify-content: center; /* افقی وسط */
+  align-items: center;     /* عمودی وسط */
+  height: calc(100vh - 80px); /* کل ارتفاع صفحه منهای ارتفاع تقریبی Header */
+}
+
+.formContainer{
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-top: 50px;
+align-items: center;
+border-radius: 6px;
+padding-block: 10px;
+width: 500px;
+background-color: rgb(146, 199, 225);
+ box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+
+
+}
+.formContainer input , button{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+   padding: 12px 15px; /* مناسب برای کلیک راحت */
+    margin: 8px 0;
+
+    color: darkblue;
+    font-size: 13px;
+    outline: none;
+   
+    border: 1px solid rgb(7, 127, 167);
+    border-radius: 8px;
+     transition: 0.2s;
+}
+.formContainer input:focus {
+    border-color: rgb(27, 128, 230);
+}
+formContainer button {
+    cursor: pointer;
+    background-color: rgb(7, 127, 167);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.formContainer button:hover {
+    background-color: rgb(27, 128, 230);
+    color: #fff;
+}
+@media(max-width: 500px){
+    .formContainer{
+        width: 90%;
+    }
+}
