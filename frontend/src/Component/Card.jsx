@@ -7,7 +7,7 @@ function Card({ anime }){
         <button >✏️</button>
         <button >🗑️</button>
       </div>
-      <img src={anime.image} alt={anime.name} className="movie-poster" />
+     
       <div className="movie-info">
         <h3 className="movie-name">
         {anime.name}
