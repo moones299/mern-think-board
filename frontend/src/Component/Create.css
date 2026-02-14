@@ -1,88 +1,75 @@
-*{
-  padding: 0;  
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-  background-color: rgb(204, 237, 248);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  
- 
-}
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-
-  background: rgba(0, 0, 0, 0.6);
-
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 1000;
 }
 
-
-
-.formWrapper {
+.create-container {
+  background-color: rgb(146, 199, 225);
+  padding: 25px 20px;
+  border-radius: 12px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: center; /* افقی وسط */
-  align-items: center;     /* عمودی وسط */
-  height: calc(100vh - 80px); /* کل ارتفاع صفحه منهای ارتفاع تقریبی Header */
+  flex-direction: column;
+  gap: 15px;
 }
 
-.formContainer{
-display: flex;
-flex-direction: column;
-justify-content: center;
-margin-top: 50px;
-align-items: center;
-border-radius: 6px;
-padding-block: 10px;
-width: 500px;
-background-color: rgb(146, 199, 225);
- box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-
-
-
-}
-.formContainer input , button{
-    width: 90%;
-    display: flex;
-    justify-content: center;
-   padding: 12px 15px; /* مناسب برای کلیک راحت */
-    margin: 8px 0;
-
-    color: darkblue;
-    font-size: 13px;
-    outline: none;
-   
-    border: 1px solid rgb(7, 127, 167);
-    border-radius: 8px;
-     transition: 0.2s;
-}
-.formContainer input:focus {
-    border-color: rgb(27, 128, 230);
-}
-formContainer button {
-    cursor: pointer;
-    background-color: rgb(7, 127, 167);
-    color: white;
-    font-weight: bold;
-    border: none;
+.create-container input,
+.create-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-block: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(7, 127, 167);
+  outline: none;
+  font-size: 14px;
+  background-color: #e8f0f8;
+  resize: vertical;
 }
 
-.formContainer button:hover {
-    background-color: rgb(27, 128, 230);
-    color: #fff;
+.create-container input:focus,
+.create-container textarea:focus {
+  border-color: rgb(27, 128, 230);
 }
-@media(max-width: 500px){
-    .formContainer{
-        width: 90%;
-    }
+
+.create-container button {
+  width: 100%;
+  padding: 12px;
+  margin-block: 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(7, 127, 167);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
+
+.create-container button:hover {
+  background-color: rgb(27, 128, 230);
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #03396c;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+}
+

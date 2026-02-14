@@ -1,61 +1,48 @@
-import "./Create.css"
 import { useState } from "react";
-import aotPoster from "./images/atack.png";
-import  deathNotePoster from "./images/note.png";
-function Create({ addAnime , createCardhandler  }) {
-   
-  const [name, setName] = useState("");
+import "./Create.css";
+
+function Create({ createNoteHandler, onClose }) { // onClose اضافه شد
   const [title, setTitle] = useState("");
-  const [rating, setRating] = useState("");
+  const [content, setContent] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title.trim() || !content.trim()) return;
 
- 
-  
-  const handleAdd = () => {
-   
-    const newAnime = {
-      name,
-      title,
-      rating
-    };
+    createNoteHandler({ title, content });
 
-    createCardhandler(newAnime);
-
-    setImage("");
-    setName("");
     setTitle("");
-    setRating("");
+    setContent("");
   };
 
   return (
-    <>
-    {addAnime &&
-  <div className="overlay">
- <div className="formContainer">
-       
-        <input type="text" className="name" placeholder="Anime Name" 
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        />
-        <input type="text" className="title" placeholder="Title"   
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        />
-        <input type="number" className="rating" placeholder="Rating (1-10)"
-        value={rating}
-        onChange={(e)=> setRating(e.target.value)}
-        />
-        <button onClick={handleAdd} className="addAnimeBtn">Add</button>
-      </div>
+    <div className="overlay">
+      <div className="create-container">
+      
 
-  </div>
-  
-    }
-     
-    
-   
-     
-    </>
+        <form className="create-form" onSubmit={handleSubmit}>
+          <h2>Add New Note</h2>
+
+          <input
+            type="text"
+            placeholder="Note title..."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+
+          <textarea
+            placeholder="Write your note..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+
+          <button type="submit">Create</button>
+           <button type="button" onClick={onClose}>
+              Close
+            </button>
+        </form>
+      </div>
+    </div>
   );
 }
 

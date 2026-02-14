@@ -7,10 +7,10 @@ function Header({ onAddClick }){
     return(
         <>
         <div className="Headerbar">
-             <h1>Top Anime</h1>
+             <h1>Note</h1>
        <div className="searchbar ">
         <input type="search" placeholder="search" />
-        <button  onClick={onAddClick}>Add Anime</button>
+        <button  onClick={onAddClick}>Add</button>
        </div>
         </div>
        

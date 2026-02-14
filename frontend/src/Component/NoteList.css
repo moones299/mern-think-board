@@ -1,0 +1,7 @@
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;             /* فاصله افقی و عمودی بین کارت‌ها */
+  justify-content: center; /* کارت‌ها وسط صفحه */
+  padding: 20px;
+}

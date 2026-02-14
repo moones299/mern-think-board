@@ -1,63 +1,50 @@
-import AnimeList from "./Component/AnimeLIst.jsx";
-import Create from "./Component/Create.jsx";
-import Header from "./Component/Header.jsx"
-import { useState } from "react";
-import { useEffect } from "react";
+import NoteList from "./Component/NoteList";
+import Create from "./Component/Create";
+import Header from "./Component/Header";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [addAnime, setAddAnime] = useState(false);
-  const [cardList, setCardList] = useState([]);
-useEffect(() => {
-  fetch("http://localhost:3001/api/notes")
-    .then(res => res.json())
-    .then(data => {
-      setCardList(data.data);  // 👈 این خط اصلاح شد
-    })
-    .catch(err => console.log(err));
-}, []);
+  const [addNote, setAddNote] = useState(false);
+  const [noteList, setNoteList] = useState([]);
 
+  useEffect(() => {
+    fetch("http://localhost:3001/api/notes")
+      .then((res) => res.json())
+      .then((data) => setNoteList(data.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-
-
- 
   const handleAddClick = () => {
-    setAddAnime(true);
+    setAddNote(true); // وقتی دکمه زده شد، فرم باز بشه
   };
 
-  
+  const createNoteHandler = async (newNote) => {
+    try {
+      // POST به بک
+      await fetch("http://localhost:3001/api/notes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newNote),
+      }).catch((err) => console.log(err));
 
+      // اضافه کردن note به لیست در فرانت
+      setNoteList((prev) => [...prev, newNote]);
 
-const createCardhandler = async (newAnime) => {
-  try {
-    // POST به بک (همینطور نگه دار)
-    fetch("http://localhost:3001/api/notes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newAnime)
-    }).catch(err => console.log(err));
+      setAddNote(false); // فرم بعد از ساخت note بسته شود
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-    // اضافه کردن کارت به لیست از فرم
-    setCardList(prev => [...prev, newAnime]);
-
-    setAddAnime(false);
-
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-
-
-  return( 
+  return (
     <>
-    <Header onAddClick={handleAddClick}/>
-    <AnimeList  cardList={cardList}/>
-   <div className="formWrapper">
-        <Create addAnime={addAnime}  createCardhandler={createCardhandler} /> 
-      </div>
+      <Header onAddClick={handleAddClick} />
+      <NoteList noteList={noteList} />
 
+      {/* فرم فقط وقتی addNote=true نمایش داده میشه */}
+      {addNote && <Create addNote={addNote} createNoteHandler={createNoteHandler}   onClose={() => setAddNote(false)} />}
     </>
-  )
+  );
 };
 
 export default App;

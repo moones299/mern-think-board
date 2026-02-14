@@ -1,21 +1,19 @@
-import './Card.css'
+import "./Card.css";
 
-function Card({ anime }){
-    return(
-       <div className="movie-card">
-        <div className="card-actions">
-        <button >✏️</button>
-        <button >🗑️</button>
+function Card({ note }) {
+  return (
+    <div className="movie-card">
+      <div className="card-actions">
+        <button>✏️</button>
+        <button>🗑️</button>
       </div>
-     
+
       <div className="movie-info">
-        <h3 className="movie-name">
-        {anime.name}
-        </h3>
-        <p className="movie-title">{anime.title}</p>
-        <p className="movie-rating">⭐{anime.rating} </p>
+        <h3 className="movie-name">{note.title}</h3>
+        <p className="movie-title">{note.content}</p>
       </div>
     </div>
-    )
+  );
 }
-export default Card
+
+export default Card;
