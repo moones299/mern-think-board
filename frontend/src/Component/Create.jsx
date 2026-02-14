@@ -1,27 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Create.css";
 
-function Create({ createNoteHandler, onClose }) { // onClose اضافه شد
+function Create({
+  createNoteHandler,
+  updateNoteHandler,
+  editingNote,
+  onClose,
+}) {
+  // onClose اضافه شد
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  // وقتی فرم باز میشه، اگه قراره ادیت کنیم، مقادیر قبلی رو جایگذاری کن
+  useEffect(() => {
+    if (editingNote) {
+      setTitle(editingNote.title);
+      setContent(editingNote.content);
+    }
+  }, [editingNote]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim() || !content.trim()) return;
 
-    createNoteHandler({ title, content });
-
-    setTitle("");
-    setContent("");
+    if (editingNote) {
+      updateNoteHandler(editingNote._id, { title, content });
+    } else {
+      createNoteHandler({ title, content });
+    }
   };
 
   return (
     <div className="overlay">
       <div className="create-container">
-      
-
         <form className="create-form" onSubmit={handleSubmit}>
-          <h2>Add New Note</h2>
+          <h2>{editingNote ? "Edit Note" : "Add New Note"}</h2>
 
           <input
             type="text"
@@ -36,10 +49,10 @@ function Create({ createNoteHandler, onClose }) { // onClose اضافه شد
             onChange={(e) => setContent(e.target.value)}
           />
 
-          <button type="submit">Create</button>
-           <button type="button" onClick={onClose}>
-              Close
-            </button>
+          <button type="submit">{editingNote ? "Update" : "Create"}</button>
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
         </form>
       </div>
     </div>
