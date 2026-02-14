@@ -1,11 +1,11 @@
 import "./Card.css";
 
-function Card({ note }) {
+function Card({ note, onDelete, onEdit }) {
   return (
     <div className="movie-card">
       <div className="card-actions">
-        <button>✏️</button>
-        <button>🗑️</button>
+        <button onClick={() => onEdit(note)}>✏️</button>
+        <button onClick={() => onDelete(note)}>🗑️</button>
       </div>
 
       <div className="movie-info">
